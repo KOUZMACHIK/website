@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6dab878f26.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="contact.css">
+    <title>Contact Us - TERKO</title>
+    <script src="https://kit.fontawesome.com/6dab878f26.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1>GET IN TOUCH</h1>
+        <p>We'd Love To Hear From You</p>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span></span> TERKO
+            </a>
+
+            <div class="nav-center">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+                    <li><a href="about.html" onclick="closeMenu()">About</a></li>
+                    <li><a href="service.html" onclick="closeMenu()">Services</a></li>
+                    <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-overlay" onclick="closeMenu()"></div>
+
+    <div class="container">
+        <div class="contact-card fade-in">
+            <h2>Contact Us</h2>
+            <p>Have a question or want to work together? We're here to help! Reach out to us through any of the following channels and we'll get back to you as soon as possible.</p>
+
+            <div class="contact-methods">
+                <h3>Connect With Us</h3>
+                <p>Whether you prefer email or social media, we're just a message away!</p>
+            </div>
+
+            <div class="social-links">
+                <a href="mailto:terkowebs@gmail.com" target="_blank" class="social-link">
+                    <div class="social-icon email-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <span class="social-label">Email</span>
+                </a>
+                
+                <a href="https://www.instagram.com/terko_webs/" target="_blank" class="social-link">
+                    <div class="social-icon instagram-icon"><i class="fa-brands fa-instagram"></i></div>
+                    <span class="social-label">Instagram</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const navCenter = document.querySelector('.nav-center');
+            const overlay = document.querySelector('.mobile-overlay');
+
+            menuIcon.classList.toggle('active');
+            navCenter.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        }
+
+        function closeMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const navCenter = document.querySelector('.nav-center');
+            const overlay = document.querySelector('.mobile-overlay');
+
+            menuIcon.classList.remove('active');
+            navCenter.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        const animatedElements = document.querySelectorAll('.fade-in');
+        animatedElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

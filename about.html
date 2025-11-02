@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - TERKO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(to bottom, #d0dae3 0%, #e8eef3 50%, #f5f7fa 100%);
+            position: relative;
+        }
+
+        header {
+            background: linear-gradient(to right, rgb(70, 90, 110) 0%, rgb(112, 128, 144) 50%, rgb(70, 90, 110) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="80" height="80" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="2" height="2" fill="white" opacity="0.15"/></svg>');
+            animation: slide 15s linear infinite;
+        }
+
+        @keyframes slide {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(80px);
+            }
+        }
+
+        @keyframes slide {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(80px);
+            }
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInDown 1s ease;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease 0.2s both;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        nav {
+            background: #333;
+            padding: 0.7rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.3s;
+        }
+
+        .logo span {
+            font-size: 1.1rem;
+        }
+
+        .logo:hover {
+            color: rgb(112, 128, 144);
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .menu-icon span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+
+        .menu-icon.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-icon.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-icon.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: inline-block;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.3rem;
+            display: inline-block;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: rgb(112, 128, 144);
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after {
+            width: 80%;
+        }
+
+        nav a:hover {
+            color: rgb(112, 128, 144);
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .nav-center {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                transition: right 0.4s ease;
+                z-index: 1000;
+            }
+
+            .nav-center.active {
+                right: 0;
+            }
+
+            .nav-links {
+                width: 100%;
+                height: 100%;
+                background: rgba(51, 51, 51, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+                padding: 0;
+                margin: 0;
+            }
+
+            .nav-links li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+                display: block;
+            }
+
+            .nav-links li a {
+                display: block;
+                margin: 1rem 0;
+                font-size: 1.2rem;
+                padding: 1rem 2rem;
+            }
+
+            .mobile-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(5px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.4s ease;
+                z-index: 99;
+                overflow: hidden;
+            }
+
+            .mobile-overlay.active {
+                opacity: 1;
+                visibility: visible;
+                overflow: hidden;
+            }
+
+            body.menu-open {
+                overflow: hidden;
+                position: fixed;
+                width: 100%;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid rgb(112, 128, 144);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h2 {
+            color: rgb(112, 128, 144);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, rgb(112, 128, 144), rgb(70, 90, 110));
+            border-radius: 2px;
+        }
+
+        .card h3 {
+            color: rgb(70, 90, 110);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            margin-bottom: 1rem;
+        }
+
+        .card ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid rgb(112, 128, 144);
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-box h3 {
+            color: rgb(70, 90, 110);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        button {
+            background: linear-gradient(135deg, rgb(112, 128, 144) 0%, rgb(70, 90, 110) 100%);
+            color: white;
+            border: none;
+            padding: 0.9rem 2.5rem;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(112, 128, 144, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(112, 128, 144, 0.4);
+        }
+
+        button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>About TERKO</h1>
+        <p>Learn More About Our Story</p>
+    </header>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span></span> TERKO
+            </a>
+            <div class="nav-center">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+                    <li><a href="about.html" onclick="closeMenu()">About</a></li>
+                    <li><a href="service.html" onclick="closeMenu()">Services</a></li>
+                    <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+                </ul>
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-overlay" onclick="closeMenu()"></div>
+    <div class="container">
+        <div class="card fade-in">
+            <h2>Who We Are</h2>
+            <p>At TERKO, we’re a team of passionate designers, developers, and digital strategists who believe that
+                every business deserves an impactful online presence.
+
+                We’re not just a web design agency — we’re your digital growth partner. Our diverse team brings together
+                creativity, technology, and strategy to craft experiences that connect with people and deliver real
+                results.
+
+                Founded on the belief that great design drives success, TERKO was built to help businesses of all sizes
+                thrive in the digital world. From startups to established brands, we work closely with our clients to
+                understand their vision and turn it into a digital experience that inspires trust and engagement.
+
+                What sets us apart is our commitment to quality, collaboration, and innovation. We don’t just build
+                websites — we build long-term relationships grounded in transparency and results.
+
+                We are TERKO — a team driven by passion, powered by creativity, and dedicated to helping your business
+                grow online.</p>
+            <p>We’re a team of innovators, problem-solvers, and digital creators focused on turning ideas into impactful
+                online experiences.
+                At TERKO, we blend design, technology, and strategy to help brands grow and connect with their audience.
+            </p>
+        </div>
+
+        <div class="card fade-in">
+            <h2>Our Mission</h2>
+            <p>Our goal is simple — to build digital solutions that inspire trust and deliver measurable results.</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box scale-in">
+                <h3>Our Vision</h3>
+                <p>We aim to build a future where TERKO empowers brands and people to thrive through technology,
+                    creativity, and collaboration.</p>
+            </div>
+            <div class="info-box scale-in" style="transition-delay: 0.1s;">
+                <h3>Our Values</h3>
+                <p>At TERKO, we value integrity, innovation, and collaboration, delivering digital solutions that drive
+                    growth and make an impact.</p>
+            </div>
+            <div class="info-box scale-in" style="transition-delay: 0.2s;">
+                <h3>Our Team</h3>
+                <p>Our team combines creativity, expertise, and passion to deliver digital solutions that help
+                    businesses grow and stand out.</p>
+            </div>
+        </div>
+
+        <div class="card fade-in">
+            <h2>What We Do</h2>
+            <p>At TERKO, we help businesses succeed online through a full range of web services. We build websites from
+                scratch, redesign existing sites, fix bugs, and provide ongoing maintenance to ensure your digital
+                presence stays strong and effective.</p>
+            <h3>Our Services Include:</h3>
+            <ul>
+                <li>Web Development - We create professional, custom websites that reflect your brand and engage your
+                    audience.</li>
+                <li>Website Redesign - Refresh and modernize your existing site to improve design, functionality, and
+                    user experience.</li>
+                <li>Bug Fixes - We quickly identify and resolve website issues to keep your site running smoothly.</li>
+                <li>Website Maintenance - Ongoing support to update, optimize, and secure your website for long-term
+                    performance.</li>
+            </ul>
+        </div>
+
+        <div class="card fade-in">
+            <h2>Why Choose Us?</h2>
+            <p>At TERKO, we combine innovation with a personal approach. We take the time to understand your business,
+                turning challenges into creative solutions. Our clients choose us for our adaptability, attention to
+                detail, and commitment to delivering results that truly make a difference.</p>
+            <p>Every solution is crafted to match your goals, adapt to your needs, and help your business grow.</p>
+        </div>
+
+        <div class="card fade-in">
+            <h2>Get In Touch</h2>
+            <p>Ready to work with us? We'd love to hear from you!</p>
+            <a href="mailto:terkowebs@gmail.com" target="_blank"
+                style="margin-top: 1rem; display: inline-block; text-decoration: none;"><button><span>Contact
+                        Us</span></button></a>
+        </div>
+    </div>
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const navCenter = document.querySelector('.nav-center');
+            const overlay = document.querySelector('.mobile-overlay');
+            menuIcon.classList.toggle('active');
+            navCenter.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        }
+        function closeMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const navCenter = document.querySelector('.nav-center');
+            const overlay = document.querySelector('.mobile-overlay');
+            menuIcon.classList.remove('active');
+            navCenter.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        // Observe all animated elements
+        const animatedElements = document.querySelectorAll('.fade-in, .slide-left, .slide-right, .scale-in');
+        animatedElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
